@@ -1,115 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
-public class Lab10 {
+public class Lab10Q4 {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
-        Q1();
-        Q2();
-        Q3();
-        Q4();
-        scan.close();}
-
-    public static void Q1() {
-        while (true) {
-            System.out.println("Pick a shape: square, rectangle, circle (or 'q' to quit)");
-            String input = scan.nextLine();
-            double a, b, r, circum = 0, area = 0; // declared all of the variables at the start of the function
-            if (input.equals("q")) {
-                return;}
-            if (input.equals("square")) {
-                System.out.println("Enter the length of side a: ");
-                a = Double.parseDouble(scan.nextLine());
-                circum =  a * 4;  // found circumference and area inside if statements to save unnecessary prints
-                area =  a * a;}
-            else if (input.equals("rectangle")) {
-                System.out.println("Enter the length of side a: ");
-                a = Double.parseDouble(scan.nextLine());
-                System.out.println("Enter the length of side b: ");
-                b = Double.parseDouble(scan.nextLine());
-                circum = (2 * a + 2 * b);
-                area = a * b;}
-            else if (input.equals("circle")) {
-                System.out.println("Enter the radius: ");
-                r = Double.parseDouble(scan.nextLine());
-                circum = Math.PI * r * 2;
-                area = Math.PI * r * r;}
-            else{
-                System.out.println("Invalid Entry");
-                break;}
-            System.out.println("The circumference of the " + input + " is: " + circum); // added print statements outside of if & else if statments
-            System.out.println("The area of the " + input + " is: " + area);
-        }
-    }
-
-    public static void Q2() {
-        String array [] = {"Janurary","Feburary","March","April","May","June","July","August","September","October","November","December"};
-        System.out.println("Q2: Enter the current day (1-31): "); // I gave each month it's own spot in the array so I could call it later 
-        String day = scan.nextLine();
-        int num = Integer.parseInt(day);
-        String lastNum = "" + day.charAt(day.length()-1); // found the last digit of the day so I knew what suffix to add
-        int num1 = Integer.parseInt(lastNum); 
-        System.out.println("Enter the current month: (1-12)");
-        int num2 = Integer.parseInt(scan.nextLine());
-        if (num2==2){ // first of all checked the month to make sure there were the right amount of days in the month
-            if(num>0 && num<30){ // included the 29th of Feburary as years were not specified
-                if(num1==1){
-                    System.out.print("You selected " + num +"st of ");}
-                else if (num1 == 2){
-                    System.out.print("You selected " + num + "nd of ");}
-                else if (num1 == 3){
-                    System.out.print("You selected " + num + "rd of ");}
-                else if (num1 > 3 ){
-                    System.out.print("You selected " + num + "th of ");}
-                System.out.println("February"); // since only one month has 29 days, this one is guarenteed to be Feburary
-            }}
-        else if (num2==4 || num2==6 || num2==9 || num2==11){ // these two lines check that the day is less than there is in April, June, September and November
-            if(num>0 && num<31){
-                if (num1==1){
-                    System.out.print("You selected " + num +"st of ");}
-                else if (num1 == 2){
-                    System.out.print("You selected " + num + "nd of ");}
-                else if (num1 == 3){
-                    System.out.print("You selected " + num + "rd of ");}
-                else if (num1 > 3 || num1 ==0){
-                    System.out.print("You selected " + num + "th of ");}
-                for(int mnths = 11; mnths>=0; mnths--){ // this is a for loop to count backwards through the array until it finds which index+1 is equal to the month number
-                    if(mnths+1 == num2){
-                        System.out.println(array[mnths]);}} // this prints the content of the array[mnths] when it finds the correct index
-            }}
-        else if (num2==1 || num2==3 || num2==5 || num2==7 || num2==8 || num2==10 || num2==12){
-            if(num>0 && num<32){ // This else if does the same for Janurary, March, May, July, August, October, December
-                if (num1==1){
-                    System.out.print("You selected " + num +"st of ");}
-                else if (num1 == 2){
-                    System.out.print("You selected " + num + "nd of ");}
-                else if (num1 == 3){
-                    System.out.print("You selected " + num + "rd of ");}
-                else if (num1 > 3 || num1 ==0){
-                    System.out.print("You selected " + num + "th of ");}
-                for(int mnths = 11; mnths>=0; mnths--){
-                    if(mnths+1 == num2){
-                        System.out.println(array[mnths]);}} // This improved use of if/if else saves nearly 50 needless lines
-                }
-        }
-    }
-
-public static void Q3() {
-    System.out.println("Q3: Enter how many numbers you want to check for primality: ");
-    int n = Integer.parseInt(scan.nextLine());
-    int counter = 0;
-    for (int i = 0; i < n; i++) {
-        if (i < 2)
-            continue;
-            boolean check = true;
-        for (int j = 2; j * j <= i; j++) {
-            if (i % j == 0) {
-                check = false;
-                break;}}
-            if (check == true) {
-                counter++;}}
-    System.out.println("There are: " + counter + " primes between 0 and " + n);
-    }
-
+        Q4();}
     public static void Q4() {
         boolean start = false;
         boolean loop = false;
@@ -140,8 +34,7 @@ public static void Q3() {
                         break;
                     case "B", "b":
                         buff = true;
-                        System.out.println("Buffing! +" + standardBuff +" to your next attack roll and damage");
-                        check2=false;
+                        System.out.println("Buffing! +5 to your next attack roll and damage");
                         break;
                     case "S", "s":
                         settings=true;
@@ -198,8 +91,8 @@ public static void Q3() {
                                     cSettings=false;
                                     break;}
                                 else{
-                                    System.out.println(newCrit + " is an invalid crit number, please select a number between 10 and 20");}}
-                            break;
+                                    System.out.println(newCrit + " is an invalid crit number, please select a number between 10 and 20");}
+                            break;}
                         case "P", "p":
                             boolean pSettings = true;
                             while(pSettings){
@@ -212,8 +105,8 @@ public static void Q3() {
                                     pSettings=false;
                                     break;}
                                 else{
-                                    System.out.println(newBuff + " is an invalid buff number, please select a number between -5 and 15");}}
-                            break;
+                                    System.out.println(newBuff + " is an invalid buff number, please select a number between -5 and 15");}
+                            break;}
                         case "Q", "q":
                             settingCtrl = true;
                             settings = false;

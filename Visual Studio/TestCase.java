@@ -1,9 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
-
 public class TestCase {
     static Scanner scan = new Scanner(System.in);
-
     public static void main(String[] args) {
         Q1();
         Q2();
@@ -11,7 +9,6 @@ public class TestCase {
         Q4();
         scan.close();
     }
-
     public static void Q1() {
         while (true) {
             System.out.println("Pick a shape: square, rectangle, circle (or 'q' to quit)");
